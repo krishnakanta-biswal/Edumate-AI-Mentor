@@ -1,0 +1,139 @@
+Create a full professional web application called “EduMate – Your AI Mentor” using HTML, CSS, and JavaScript (frontend) with Node.js + Express (backend).
+The app should serve as an AI-powered study assistant and mentor for students, offering career guidance, doubt solving, and local institute suggestions.
+
+🧭 Overall Flow
+
+When a user opens the app, they see a Login / Registration page.
+
+After logging in, they reach the main EduMate dashboard, containing:
+
+AI Doubt Solver
+
+Career Guidance
+
+Local Institute Finder
+
+All features should be mobile-responsive, visually modern, and student-friendly.
+
+🔐 Authentication (Login / Registration)
+
+Create a simple registration and login form (HTML/CSS + JavaScript validation).
+
+Store user info locally (for now use browser localStorage to simulate login).
+
+After login, redirect to dashboard.html.
+
+Dashboard greets the user by their name.
+
+💬 AI Doubt Solver
+
+A full-screen chat interface for asking academic doubts.
+
+Users can select a subject (Math, Science, English, Coding, etc.) before sending a question.
+
+Use Groq API (mixtral-8x7b-32768 model) through Node.js Express /chat endpoint.
+
+Add:
+
+Voice Input (🎤 mic button using Web Speech API)
+
+Voice Output (SpeechSynthesis API to read AI replies aloud)
+
+File Uploads (image/video upload up to 10 MB, preview shown in chat)
+
+Chat History saved in localStorage with a “Clear Chat” option
+
+Loading indicator like “EduMate is thinking...”
+
+💼 Career Guidance Section
+
+Create a section or page named Career Guidance.
+
+Here, students answer a few simple questions (their interests, favorite subjects, goals).
+
+Send this info to the backend /career endpoint that uses Groq API to generate personalized career suggestions.
+
+Example output: “You seem interested in technology and logic-based work. You may explore roles like Software Developer, Data Analyst, or UI Designer.”
+
+Display suggestions in a styled card layout.
+
+📍 Local Institute Finder
+
+Add a section or page named Local Institutes.
+
+Use the browser’s Geolocation API to get the student’s current city.
+
+Then, call an open API like Google Maps Places API or OpenStreetMap (you can mock this if needed).
+
+Show nearby institutes, coaching centers, or colleges in cards with:
+
+Institute Name
+
+Address
+
+Rating (if available)
+
+Optionally, allow users to filter by subject (e.g., “Math Institutes near me”).
+
+🎨 Design & Styling
+
+Use Tailwind CSS or modern custom CSS with pastel education-friendly colors.
+
+Include EduMate logo and branding (header with text “EduMate – Your AI Mentor”).
+
+Dashboard should have 3 main cards:
+
+Doubt Solver
+
+Career Guidance
+
+Local Institutes
+
+Each card opens its respective section/page when clicked.
+
+🧠 Backend (Node.js + Express)
+
+Create APIs:
+
+/chat → For AI doubt solving
+
+/career → For personalized career guidance
+
+Use dotenv for managing GROQ_API_KEY securely.
+
+Serve all frontend files from a public/ folder.
+
+🗂 File Structure
+/edumate
+├── server.js
+├── package.json
+├── .env
+├── public/
+│   ├── index.html        # Login/Register page
+│   ├── dashboard.html    # Main home after login
+│   ├── doubt.html        # AI doubt solver chat
+│   ├── career.html       # Career guidance section
+│   ├── institutes.html   # Local institute finder
+│   ├── style.css
+│   └── app.js
+
+⚙️ Extra Details
+
+Use vanilla JS only (no React).
+
+Include comments in code for clarity.
+
+Make sure it runs directly when opened in Replit.
+
+Voice features and file upload should work in browser.
+
+Goal: Build a fully functional AI-powered student mentor app called EduMate, offering:
+
+AI doubt solving (voice + file support)
+
+Personalized career guidance
+
+Local institute suggestions
+
+Login/registration
+All inside one clean, responsive, professional interface.
