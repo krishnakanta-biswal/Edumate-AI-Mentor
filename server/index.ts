@@ -12,19 +12,15 @@ dotenv.config();
 
 const app = express();
 
-// Needed for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// ✅ API Routes
 app.use("/api", aiRoutes);
 app.use("/api", careerRoutes);
 
-// ✅ Request Logger
 app.use((req: Request, res: Response, next: NextFunction) => {
   const start = Date.now();
   res.on("finish", () => {
@@ -39,16 +35,15 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     const server = http.createServer(app);
 
     if (app.get("env") === "development") {
-      // Use Vite in development
       await setupVite(app, server);
     } else {
-      // ✅ Production static serving (Render)
-      const distPath = path.join(__dirname, "../dist");
-      app.use(express.static(distPath));
+      // 🔥 CORRECT PATH FOR CLIENT BUILD
+      const clientDistPath = path.join(__dirname, "../../client/dist");
 
-      // SPA fallback
+      app.use(express.static(clientDistPath));
+
       app.get("*", (_req: Request, res: Response) => {
-        res.sendFile(path.join(distPath, "index.html"));
+        res.sendFile(path.join(clientDistPath, "index.html"));
       });
     }
 
